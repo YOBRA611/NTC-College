@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NTC College | Online Learning</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Jost", sans-serif;
+    }
+
+    :root {
+      --red: #d71920;
+      --navy: #082b4f;
+      --blue: #123f6d;
+      --text: #1b2633;
+      --muted: #667085;
+      --light: #f6f9fd;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 90%);
+      margin: auto;
+    }
+
+    .topbar {
+      background: var(--navy);
+      color: #fff;
+      font-size: 14px;
+      padding: 9px 0;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* HEADER */
+    .main-header {
+        width: 100%;
+        height: 79px;
+        background: var(--white);
+        backdrop-filter: blur(0px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        padding: 0 60px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+    }
+    .main-header.scrolled {
+    background: var(--white);
+    backdrop-filter: blur(0px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    /* LOGO */
+    .main-header .logo {
+        width: 75px;
+        display: block;
+    }
+    /* NAV */
+    header ul {
+        display: flex;   /* 🔥 replaces float */
+        align-items: center;
+        gap: 10px;
+    }
+    /* REMOVE FLOAT */
+    header ul li {
+        list-style: none;
+    }
+    /* LINKS */
+    header ul li a {
+        color: var(--secondary);
+        font-size: 16px;
+        padding: 10px 18px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+    /* HOVER */
+    header ul li a:hover {
+        color: var(--red);
+    }
+    /* BUTTON (your <a>) */
+    .dropdown .dropbtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: var(--secondary);
+        font-size: 16px;
+        text-decoration: none;
+        padding: 12px 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+    /* HOVER EFFECT */
+    .dropdown .dropbtn:hover {
+        color: var(--red);
+        border-radius: 4px;
+    }
+    /* ICON */
+    .dropdown .dropbtn i {
+        font-size: 16px;
+        color: var(--secondary);
+        transition: transform 0.3s ease;
+    }
+    /* ROTATE ICON WHEN ACTIVE */
+    .dropdown.active .dropbtn i {
+        transform: rotate(180deg);
+    }
+    /* DROPDOWN */
+    .dropdown {
+        position: relative;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        background: var(--white);
+        backdrop-filter: blur(10px);
+        min-width: 220px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    /* DROPDOWN LINKS */
+    .dropdown-content li a {
+        display: block;
+        padding: 12px 15px;
+        font-size: 16px;
+        color: var(--secondary);
+    }
+    /* SHOW DROPDOWN */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    /* DROPDOWN HOVER */
+    .dropdown-content li a:hover {
+        color: var(--red);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 13px 24px;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 2px solid var(--red);
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: var(--navy);
+      color: white;
+      border-color: #dcd9d9;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    /* icon */
+    .whatsapp-float i {
+        width: 55px;
+        height: 55px;
+        background: #25D366;
+        color: #fff;
+        font-size: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: 0.3s ease;
+        /* Pulse effect */
+        animation: pulse 2s infinite;
+    }
+    /* Hover effect */
+    .whatsapp-float i:hover {
+        transform: scale(1.1);
+    }
+    /* Pulse animation */
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+        70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    /* TEXT */
+    .whatsapp-text {
+        left: 60px;
+        top: 50%;
+        transform: translateY(-50%) translateX(-20px);
+        background: #25D366;
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 25px;
+        font-size: 14px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    /* Small speech bubble arrow */
+    .whatsapp-text::after {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent #25D366 transparent transparent;
+    }
+    /* SHOW */
+    .whatsapp-float.show .whatsapp-text {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+    /* scroll button*/
+    #progress{
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+        width: 45px;
+        color: white;
+        height: 45px;
+        display: none;
+        place-items: center;
+        border-radius: 50%;
+        box-shadow: 0,0,10px rgb(225, 222, 216);
+        cursor: pointer;
+        z-index: 9999;
+    }
+    #progress-value{
+        display: block;
+        height: calc(98% - 3px);
+        width: calc(98% - 3px);
+        background-color: #061A4A;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        z-index: 9999;
+    }
+    .hero {
+      min-height: calc(100vh - 120px);
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.9) 48%, rgba(255,255,255,.3) 100%),
+        url("image/96e36359fb0c8e9a171ab6d371e17d4c.jpg");
+      background-size: cover;
+      background-position: center right;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 620px;
+      padding: 80px 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--red);
+      background: #fff1f2;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    #typing-heading{
+        font-size: clamp(48px, 7vw, 82px);
+        line-height: .95;
+        letter-spacing: -3px;
+        color: var(--navy);
+        min-height: 180px; /* Prevent layout shift */
+    }
+
+    #typing-heading .college{
+        color: var(--red);
+    }
+
+    #typing-heading::after{
+        content: "";
+        display: inline-block;
+        width: 3px;
+        height: .9em;
+        background: var(--red);
+        margin-left: 5px;
+        animation: blink .7s infinite;
+        vertical-align: middle;
+    }
+
+    @keyframes blink{
+        50%{
+            opacity: 0;
+        }
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #344054;
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 38px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 560px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.88);
+      padding: 18px;
+      border-left: 4px solid var(--red);
+      box-shadow: 0 10px 30px rgba(8,43,79,.08);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section.light {
+      background: var(--light);
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 45px;
+    }
+
+    .section-head.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-head small {
+      color: var(--red);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      color: var(--navy);
+      margin: 8px 0 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 14px;
+    }
+
+    .feature i {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      display: grid;
+      place-items: center;
+      background: #fff1f2;
+      color: var(--red);
+      border-radius: 6px;
+      font-size: 20px;
+    }
+
+    .feature h3 {
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .course-card {
+      background: #fff;
+      border: 1px solid #e8edf3;
+      padding: 32px 26px;
+      transition: .3s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(8,43,79,.10);
+    }
+
+    .course-card i {
+      color: var(--red);
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .course-card h3 {
+      color: var(--navy);
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .course-card p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .course-card a {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .why-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .why-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .why-item {
+      background: #fff;
+      padding: 22px;
+      border-left: 4px solid var(--red);
+      box-shadow: 0 10px 30px rgba(8,43,79,.06);
+    }
+
+    .why-item h3 {
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 30px 22px;
+      background: #fff;
+      border: 1px solid #e8edf3;
+    }
+
+    .step span {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 800;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+    }
+
+    .step h3 {
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .cta {
+      background: white;
+      color: #02172c;
+      padding: 75px 0;
+    }
+
+    .cta .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    /*footer*/
+    .footer{
+        background: #02172c;
+        padding: 60px 3% 15px;
+        color:#ffffff;
+    }
+    /* CONTAINER */
+    .footer-container{
+        display:grid;
+        grid-template-columns:2fr 1fr 1fr 1fr;
+        gap:60px;
+        margin-bottom:40px;
+    }
+    /* LOGO */
+    .logo h3{
+        font-size:20px;
+        font-weight:700;
+        margin-bottom:10px;
+    }
+    .logo img{
+        width: 70px;
+        color:#ffffff;
+        margin-right:6px;
+    }
+    /* TEXT */
+    .footer-col p{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+    /* HEADINGS */
+    .footer-col h4{
+        margin-bottom:15px;
+        font-size:16px;
+        font-weight:600;
+    }
+    /* LINKS */
+    .footer-col ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .footer-col ul li{
+        margin-bottom:8px;
+    }
+    .footer-col ul li a{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #fff;
+        transition: 0.3s ease;
+    }
+    .footer-col ul li a:hover{
+        transform: translateX(5px);
+        color: var(--red);
+    }
+    /* BOTTOM FOOTER */
+    .footer-bottom{
+        border-top:1px solid #ffffff;
+        padding-top:20px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        gap:20px;
+    }
+    .footer-bottom p{
+        font-size:16px;
+        color:#ffffff;
+    }
+    .footer-bottom a{
+        text-decoration: none;
+        color: white;
+    }
+    .footer-bottom a:hover{
+        color: var(--red);
+    }
+    /* FOOTER LINKS */
+    .footer-links a{
+        margin:0 10px;
+        font-size:15px;
+        color:#ffffff;
+        text-decoration:none;
+    }
+    .footer-links a:hover{
+        color:var(--red);
+    }
+    /* SOCIAL ICONS */
+    .social-icons a{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        text-decoration: none;
+        width:32px;
+        height:32px;
+        border:1px solid #ccc;
+        border-radius:50%;
+        margin-left:10px;
+        color:#ffffff;
+        font-size:14px;
+        transition:0.3s;
+    }
+    .social-icons a:hover{
+        background:var(--gray);
+        color:white;
+        border-color:var(--red);
+    }
+
+    @media (max-width: 1115px){
+        .main-header .logo{
+            width: 70px;
+            
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .dropdown .dropbtn {
+            font-size: 14px;
+        }
+        .dropdown-content li a {
+            display: block;
+            padding: 12px 15px;
+            font-size: 14px;
+        }
+        .btn{
+        font-size: 14px;
+        font-weight: 400; 
+        }
+    }
+    @media (max-width: 1000px){
+        .main-header .logo{
+            width: 55px;
+            
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+        .dropdown .dropbtn {
+            font-size: 13px;
+        }
+        .dropdown-content li a {
+            display: block;
+            padding: 12px 15px;
+            font-size: 13px;
+        }
+        .btn{
+            font-size: 13px;
+            font-weight: 400; 
+        }
+    }
+    @media (max-width: 950px) {
+    .main-header .logo{
+        width: 45px;
+        
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 12px;
+        transition: color 0.3s;
+    }
+    .dropdown .dropbtn {
+        font-size: 13px;
+    }
+    .dropdown-content li a {
+        display: block;
+        padding: 12px 15px;
+        font-size: 12px;
+    }
+    .btn{
+       font-size: 12px;
+       font-weight: 400; 
+    }
+
+      .hero {
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-stats,
+      .about-grid,
+      .courses-grid,
+      .why-wrap,
+      .steps,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .cta .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .topbar {
+        display: none;
+      }
+
+      /* Header */
+        .main-header {
+            padding: 10px 20px;
+            position: sticky; /* important for nav positioning */
+        }
+        .main-header .logo {
+            width: 75px;
+        }
+        /* ===== MOBILE NAV CONTAINER ===== */
+        header nav {
+            position: absolute;
+            top: 70px; /* fixed under header */
+            left: 0;
+            right: 0; /* ensures full width */
+            width: 100%;
+            background: var(--white);
+            backdrop-filter: blur(10px);
+            display: none;
+            z-index: 1000;
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* Show menu when active */
+        header.active nav {
+            display: block;
+        }
+        header.active {
+            background: var(--white) !important;
+            backdrop-filter: blur(0px); 
+        }
+        /* ===== NAV LIST ===== */
+        header nav ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+        header nav ul li {
+            list-style: none;
+            width: 100%;
+        }
+        header nav ul li a,
+        .dropdown .dropbtn {
+            display: block;
+            width: 100%;
+            color: black;
+            font-size: 16px;
+            padding: 15px 0;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        header nav ul li a:hover {
+            color: var(--red);
+            background-color: transparent;
+        }
+        /* ===== DROPDOWN ===== */
+        .dropdown {
+            position: static;
+            width: 100%;
+            color: #ffffff;
+        }
+        .dropdown-content {
+            display: none;
+            position: static;
+            color: black;
+            text-align: center;
+            width: 100%;
+        }
+        /* Disable hover on mobile */
+        .dropdown:hover .dropdown-content {
+            display: none !important;
+        }
+        /* Show dropdown when active (JS controlled) */
+        .dropdown.active .dropdown-content {
+            display: block !important;
+        }
+        .dropdown-content li a {
+            padding: 12px 16px;
+            color: black;
+            font-size: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        /* Dropdown button */
+        .dropdown .dropbtn {
+            font-size: 16px;
+            gap: 50px;
+            background: none;
+            border: none;
+            color: black;
+        }
+        .dropdown .dropbtn i {
+            font-size: 16px;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+            color: black;
+        }
+        /* Remove tap highlight */
+        .dropdown .dropbtn,
+        .dropdown .dropbtn:focus,
+        .dropdown .dropbtn:active {
+            outline: none;
+            box-shadow: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .dropdown-content li a:hover {
+            color: var(--red);
+        }
+        /* ===== HAMBURGER ===== */
+        .menuToggle {
+            position: relative;
+            width: 40px;
+            height: 50px;
+            cursor: pointer;
+            color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menuToggle::before,
+        .menuToggle::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 2px;
+            background: var(--navy);
+            transition: 0.3s ease;
+        }
+        .menuToggle::before {
+            transform: translateY(-10px);
+            box-shadow: 0 10px var(--navy);
+        }
+        .menuToggle::after {
+            transform: translateY(10px);
+        }
+        /* Transform to X */
+        header.active .menuToggle::before {
+            transform: rotate(45deg);
+            box-shadow: none;
+        }
+        header.active .menuToggle::after {
+            transform: rotate(-45deg);
+        }
+
+      .hero-content {
+        padding: 60px 0;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .hero-stats {
+        gap: 12px;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .about-img img {
+        height: 320px;
+      }
+      .footer-container{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+    .footer-bottom{
+        flex-direction:column;
+        text-align:center;
+    }
+    }
+  </style>
+</head>
+
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254726839808?text=Hello%20NTC%20College!%20I'm%20interested%20in%20your%20professional%20courses%20and%20accounting%20short%20courses.%20I%20would%20like%20more%20information%20about%20admissions."
+        class="whatsapp-float"
+        target="_blank">
+
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Enquire Now</span>
+
+    </a>
+    <!--SCROLL BUTTON-->
+    <div id="progress">
+        <span id="progress-value">&#8593</span>
+    </div>
+    <div class="topbar">
+        <div class="container">
+        <span><i class="fa-solid fa-phone"></i> 0726 839 808</span>
+        <span><i class="fa-solid fa-graduation-cap"></i> 100% Online Classes | Study Anywhere</span>
+        </div>
+    </div>
+
+    <!--HEADER-->
+    <header class="main-header">
+
+        <div class="logo-wrapper">
+            <img src="image/557541624_702225992886604_8231806801416876342_n.jpg" class="logo">
+        </div>
+
+
+        <div class="menuToggle"></div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#professional-courses" class="dropbtn">
+                        <span>Courses</span>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Certified Public Accountant</a></li>
+                        <li><a href="#">BDA</a></li>
+                        <li><a href="#">CIFA</a></li>
+                        <li><a href="#">CFFE</a></li>
+                    </ul>
+                </li>
+                <li><a href="#why">Why NTC</a></li>
+                <li class="dropdown">
+                    <a href="#short-courses" class="dropbtn">
+                        <span>Short Courses</span>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-content">
+                        <li><a href="#short-courses">QuickBooks</a></li>
+                        <li><a href="#short-courses">iTax</a></li>
+                        <li><a href="#short-courses">Sage</a></li>
+                        <li><a href="#short-courses">Tally</a></li>
+                        <li><a href="#short-courses">Advanced Excel</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact Us</a></li>
+                <!-- Donate Button -->
+                <li>
+                    <a href="#" class="btn">Enroll Today</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+        <div class="hero-content">
+            <div class="tag">
+            <i class="fa-solid fa-wifi"></i>
+            Flexible Online Learning
+            </div>
+
+            <h1 id="typing-heading"></h1>
+
+            <p>
+            Build practical skills through flexible online classes designed for ambitious learners,
+            working professionals, and anyone ready to move forward.
+            </p>
+
+            <div class="hero-actions">
+            <a href="https://wa.me/254726839808" class="btn">
+                <i class="fa-brands fa-whatsapp"></i> Enroll on WhatsApp
+            </a>
+
+            <a href="#professional-courses" class="btn btn-outline">
+                View Courses
+            </a>
+            </div>
+
+            <div class="hero-stats">
+            <div class="stat">
+                <strong>100%</strong>
+                <span>Online Classes</span>
+            </div>
+
+            <div class="stat">
+                <strong>Flexible</strong>
+                <span>Study Schedule</span>
+            </div>
+
+            <div class="stat">
+                <strong>CFFE</strong>
+                <span>Future Ready</span>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="container about-grid">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Students learning online">
+        </div>
+
+        <div>
+            <div class="section-head">
+            <small>About NTC College</small>
+            <h2>Education that fits into real life.</h2>
+            <p>
+                NTC College provides flexible online learning for students who want career-focused
+                knowledge without being limited by location or busy schedules.
+            </p>
+            </div>
+
+            <div class="features">
+            <div class="feature">
+                <i class="fa-solid fa-laptop"></i>
+                <div>
+                <h3>Learn Anywhere</h3>
+                <p>Access lessons online from your phone, tablet, or computer.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                <h3>Flexible Timing</h3>
+                <p>Study at a pace that works with your daily routine.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <i class="fa-solid fa-user-graduate"></i>
+                <div>
+                <h3>Career Focused</h3>
+                <p>Courses designed to help learners gain practical skills.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <i class="fa-solid fa-headset"></i>
+                <div>
+                <h3>Student Support</h3>
+                <p>Get guidance as you move through your learning journey.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section light" id="professional-courses">
+  <div class="container">
+    <div class="section-head center">
+      <small>Professional Courses</small>
+      <h2>Build a strong professional accounting career.</h2>
+      <p>Recognized programs for learners pursuing accounting, finance, investment, and business careers.</p>
+    </div>
+
+    <div class="courses-grid">
+      <div class="course-card">
+        <i class="fa-solid fa-calculator"></i>
+        <h3>CPA</h3>
+        <p>Professional accounting training for learners pursuing a career in finance and accounting.</p>
+        <a href="https://wa.me/254726839808">Ask About CPA →</a>
+      </div>
+
+      <div class="course-card">
+        <i class="fa-solid fa-chart-pie"></i>
+        <h3>BDA</h3>
+        <p>Business data and analytics training for practical decision-making and business insight.</p>
+        <a href="https://wa.me/254726839808">Ask About BDA →</a>
+      </div>
+
+      <div class="course-card">
+        <i class="fa-solid fa-coins"></i>
+        <h3>CIFA</h3>
+        <p>Investment and financial analysis training for future finance professionals.</p>
+        <a href="https://wa.me/254726839808">Ask About CIFA →</a>
+      </div>
+
+      <div class="course-card">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        <h3>CFFE</h3>
+        <p>Financial and forensic-focused training for learners building strong professional competence.</p>
+        <a href="https://wa.me/254726839808">Ask About CFFE →</a>
+      </div>
+    </div>
+  </div>
+    </section>
+
+    <section class="section" id="short-courses">
+    <div class="container">
+        <div class="section-head center">
+        <small>Accounting Short Courses</small>
+        <h2>Practical skills you can apply immediately.</h2>
+        <p>Hands-on short courses for accounting software, tax systems, reporting, and workplace productivity.</p>
+        </div>
+
+        <div class="courses-grid">
+        <div class="course-card">
+            <i class="fa-solid fa-laptop-file"></i>
+            <h3>QuickBooks</h3>
+            <p>Learn bookkeeping, invoicing, expense tracking, and financial record management.</p>
+            <a href="https://wa.me/254726839808">Ask About QuickBooks →</a>
+        </div>
+
+        <div class="course-card">
+            <i class="fa-solid fa-receipt"></i>
+            <h3>iTax</h3>
+            <p>Hands-on training on tax filing, returns, compliance, and online tax processes.</p>
+            <a href="https://wa.me/254726839808">Ask About iTax →</a>
+        </div>
+
+        <div class="course-card">
+            <i class="fa-solid fa-building-columns"></i>
+            <h3>Sage</h3>
+            <p>Practical accounting system training for finance, bookkeeping, and business records.</p>
+            <a href="https://wa.me/254726839808">Ask About Sage →</a>
+        </div>
+
+        <div class="course-card">
+            <i class="fa-solid fa-file-lines"></i>
+            <h3>Tally</h3>
+            <p>Learn accounting, inventory, reporting, and daily business finance operations.</p>
+            <a href="https://wa.me/254726839808">Ask About Tally →</a>
+        </div>
+
+        <div class="course-card">
+            <i class="fa-solid fa-table-cells"></i>
+            <h3>Advanced Excel</h3>
+            <p>Build spreadsheet, reporting, analysis, dashboards, and productivity skills.</p>
+            <a href="https://wa.me/254726839808">Ask About Excel →</a>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="section" id="why">
+        <div class="container why-wrap">
+        <div>
+            <div class="section-head">
+            <small>Why Choose NTC</small>
+            <h2>A better way to learn online.</h2>
+            <p>
+                The website concept positions NTC College as accessible, modern, supportive,
+                and focused on helping learners move forward professionally.
+            </p>
+            </div>
+
+            <a href="https://wa.me/254726839808" class="btn">Talk to Admissions</a>
+        </div>
+
+        <div class="why-list">
+            <div class="why-item">
+            <h3>Affordable Learning</h3>
+            <p>Flexible education that gives learners a practical path to growth.</p>
+            </div>
+
+            <div class="why-item">
+            <h3>Online Convenience</h3>
+            <p>Students can learn from anywhere without being tied to a physical classroom.</p>
+            </div>
+
+            <div class="why-item">
+            <h3>Relevant Programs</h3>
+            <p>Courses designed around professional skills and real-world application.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section light">
+        <div class="container">
+        <div class="section-head center">
+            <small>How It Works</small>
+            <h2>Simple steps to get started.</h2>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+            <span>1</span>
+            <h3>Choose Course</h3>
+            <p>Select the program that matches your goals.</p>
+            </div>
+
+            <div class="step">
+            <span>2</span>
+            <h3>Enroll Online</h3>
+            <p>Contact admissions and complete registration.</p>
+            </div>
+
+            <div class="step">
+            <span>3</span>
+            <h3>Start Learning</h3>
+            <p>Access your classes and learning materials online.</p>
+            </div>
+
+            <div class="step">
+            <span>4</span>
+            <h3>Complete</h3>
+            <p>Finish your course and move forward with confidence.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+        <div>
+            <h2>Ready to level up with NTC?</h2>
+            <p>Start your learning journey today. Study online, grow your skills, and prepare for better opportunities.</p>
+        </div>
+
+        <a href="https://wa.me/254726839808" class="btn">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp 0726 839 808
+        </a>
+        </div>
+    </section>
+
+    <!--footer-->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- Column 1 -->
+            <div class="footer-col footer-brand">
+
+                <div class="logo">
+                    <span><img src="image/557541624_702225992886604_8231806801416876342_n.jpg" alt="NTC College Logo"></span>
+                    <h3>NTC College</h3>
+                </div>
+
+                <p>
+                    Empowering learners through flexible online education with professional and practical accounting courses designed for today's workplace.
+                </p>
+
+            </div>
+
+
+            <!-- Column 2 -->
+            <div class="footer-col">
+                <h4>CONTACT US</h4>
+
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Online Learning Centre · Kenya
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    Tel: +254 726 839 808
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    Email: info@ntccollege.co.ke
+                </p>
+            </div>
+
+
+            <!-- Column 3 -->
+            <div class="footer-col">
+                <h4>OUR COURSES</h4>
+
+                <ul>
+                    <li>
+                        <a href="#professional-courses">
+                            <i class="fa-solid fa-angle-right"></i>
+                            CPA
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#professional-courses">
+                            <i class="fa-solid fa-angle-right"></i>
+                            BDA
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#professional-courses">
+                            <i class="fa-solid fa-angle-right"></i>
+                            CIFA
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#professional-courses">
+                            <i class="fa-solid fa-angle-right"></i>
+                            CFFE
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#short-courses">
+                            <i class="fa-solid fa-angle-right"></i>
+                            Accounting Short Courses
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- Column 4 -->
+            <div class="footer-col">
+                <h4>QUICK LINKS</h4>
+
+                <ul>
+                    <li>
+                        <a href="#about">
+                            <i class="fa-solid fa-angle-right"></i>
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#professional-courses">
+                            <i class="fa-solid fa-angle-right"></i>
+                            Professional Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#short-courses">
+                            <i class="fa-solid fa-angle-right"></i>
+                            Accounting Short Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            <i class="fa-solid fa-angle-right"></i>
+                            Contact Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://wa.me/254726839808">
+                            <i class="fa-solid fa-angle-right"></i>
+                            Apply Today
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+
+            <p>
+                © All Rights Reserved 2026. Crafted by
+                <a href="https://wa.me/254700073919?text=Hello%20I'm%20interested%20in%20a%20website%20for%20my%20college">
+                    Brydex Technologies
+                </a>
+            </p>
+
+            <div class="footer-links">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/254726839808"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+        </div>
+
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* AOS SAFE INIT */
+            if (typeof AOS !== "undefined") {
+                AOS.init({
+                    duration: 900,
+                    easing: "ease-out-cubic",
+                    once: true,
+                    offset: 90
+                });
+            }
+
+            const header = document.querySelector(".main-header");
+            const menuToggle = document.querySelector(".menuToggle");
+            const dropdowns = document.querySelectorAll(".dropdown");
+            const progress = document.getElementById("progress");
+            const whatsapp = document.querySelector(".whatsapp-float");
+            const heading = document.getElementById("typing-heading");
+
+            /* MENU TOGGLE */
+            if (menuToggle && header) {
+                menuToggle.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    header.classList.toggle("active");
+                });
+            }
+
+            /* MOBILE DROPDOWNS */
+            dropdowns.forEach(function (dropdown) {
+                const dropBtn = dropdown.querySelector(".dropbtn");
+
+                if (dropBtn) {
+                    dropBtn.addEventListener("click", function (e) {
+                        if (window.innerWidth > 900) return;
+
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        dropdowns.forEach(function (item) {
+                            if (item !== dropdown) {
+                                item.classList.remove("active");
+                            }
+                        });
+
+                        dropdown.classList.toggle("active");
+                    });
+                }
+            });
+
+            /* CLOSE MENU WHEN LINK IS CLICKED */
+            document.querySelectorAll("nav a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    if (!link.classList.contains("dropbtn")) {
+                        header.classList.remove("active");
+
+                        dropdowns.forEach(function (dropdown) {
+                            dropdown.classList.remove("active");
+                        });
+                    }
+                });
+            });
+
+            /* CLOSE MENU WHEN CLICKING OUTSIDE */
+            document.addEventListener("click", function (e) {
+                if (header && !header.contains(e.target)) {
+                    header.classList.remove("active");
+
+                    dropdowns.forEach(function (dropdown) {
+                        dropdown.classList.remove("active");
+                    });
+                }
+            });
+
+            /* HEADER SCROLL EFFECT */
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 80) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            });
+
+            /* SCROLL BUTTON */
+            function calcScrollValue() {
+                if (!progress) return;
+
+                const pos = document.documentElement.scrollTop || document.body.scrollTop;
+                const calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollValue = Math.round((pos * 100) / calcHeight);
+
+                if (pos > 100) {
+                    progress.style.display = "grid";
+                } else {
+                    progress.style.display = "none";
+                }
+
+                progress.style.background = `conic-gradient(#d71920 ${scrollValue}%, #ffffff ${scrollValue}%)`;
+            }
+
+            if (progress) {
+                progress.addEventListener("click", function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                });
+
+                window.addEventListener("scroll", calcScrollValue);
+                calcScrollValue();
+            }
+
+            /* WHATSAPP FLOAT TEXT */
+            if (whatsapp) {
+                let lastScrollY = window.scrollY;
+                let idleTimer;
+                let visible = false;
+
+                function showWhatsApp() {
+                    if (!visible) {
+                        whatsapp.classList.add("show");
+                        visible = true;
+                    }
+                }
+
+                function hideWhatsApp() {
+                    whatsapp.classList.remove("show");
+                    visible = false;
+                }
+
+                function resetIdleTimer() {
+                    clearTimeout(idleTimer);
+
+                    idleTimer = setTimeout(function () {
+                        showWhatsApp();
+
+                        setTimeout(function () {
+                            hideWhatsApp();
+                        }, 4000);
+
+                    }, 5000);
+                }
+
+                window.addEventListener("scroll", function () {
+                    let currentScrollY = window.scrollY;
+
+                    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                        showWhatsApp();
+                    } else {
+                        hideWhatsApp();
+                    }
+
+                    lastScrollY = currentScrollY;
+                    resetIdleTimer();
+                });
+
+                resetIdleTimer();
+            }
+
+            /* TYPING EFFECT */
+            if (heading) {
+                const text = "Level up your future with NTC College.";
+                let index = 0;
+
+                function typeWriter() {
+                    if (index <= text.length) {
+                        const typed = text.substring(0, index);
+
+                        heading.innerHTML = typed.replace(
+                            "NTC College.",
+                            '<span class="college">NTC College.</span>'
+                        );
+
+                        index++;
+
+                        setTimeout(typeWriter, 80);
+                    }
+                }
+
+                typeWriter();
+            }
+
+        });
+    </script>
+</body>
+</html>
